@@ -11,7 +11,45 @@ class Complex {
     void operator>>(std::string&) const;
     void operator<<(const std::string&);
 };
-
+class Complex{
+  private: int real, imaginary;
+  public:
+    Complex{}{real=0;imaginary=0;}
+    Complex(int real, int imaginary){
+      this->real=real;
+      this->imaginary=imaginary;
+    }
+  int re(){
+    return this->real;
+  }  
+  int im(){
+    return this->imaginary;
+  }
+  void operator+=(Complex comp){
+    real+=comp.real;
+    imaginary+=comp.imaginary;
+  }
+  friend istream &operator>>(istream &is, Complex &comp){
+    is>>comp.real>>comp.imaginary;
+    return is;
+  }
+  friend ostream &operator<<(ostream &os, Complex& comp){
+    if(comp.imaginary>=0){
+      os<<comp.real<<"+"<<comp.imaginary<<"i";}
+    else{
+      os<<comp.real<<""<<comp.imaginary<<"i";}
+    return os;  
+    }  
+    }
+  }
+}  
+int main(){
+  Complex comp;
+  cout<<"enter real and imaginaryparts of the complex number: /n";
+  cin>>comp;
+  cout<<"printing compolex number with the help of overloaded stream operators: /n";
+  cout<<comp;
+}
 //------------------------------
 //   DO NOT MODIFY TEST CASES
 //------------------------------
